@@ -1,0 +1,10 @@
+- name: Fedora Setup
+  hosts: localhost
+  become: true
+
+  vars_files:
+    - vars/vars.yaml
+
+  tasks:
+    - name: Handle Config Files
+      ansible.builtin.include_tasks: tasks/configs.yml

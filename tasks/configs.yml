@@ -1,0 +1,8 @@
+- name: Create Configs Directory
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: "directory"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "700"
+  loop: "{{ configs_dir }}"

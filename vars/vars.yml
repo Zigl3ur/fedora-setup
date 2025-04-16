@@ -1,0 +1,4 @@
+user: eden
+configs_dir:
+  - ~/.config/fish
+  - ~/.config/ghostty

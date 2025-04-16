@@ -1,0 +1,11 @@
+font-family = "MesloLGS Nerd Font Mono"
+font-size = 10
+theme = "Brogrammer"
+adw-toolbar-style = "flat"
+bold-is-bright = true
+custom-shader-animation = true
+shell-integration-features = true
+background-opacity = 1
+background = black
+window-theme = "ghostty"
+window-decoration="client"
