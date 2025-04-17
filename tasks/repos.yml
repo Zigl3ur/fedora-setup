@@ -19,7 +19,7 @@
 
 # Visual Studio Code Repository
 - block:
-  
+
   - name: Add VScode Repo key
     ansible.builtin.rpm_key:
       key: https://packages.microsoft.com/keys/microsoft.asc
@@ -37,20 +37,20 @@
 
 # Zen Browser Repository
 - name: Add Zen Copr Repo
-  command: "dnf copr enable -y firminunderscore/zen-browser"
+  ansible.builtin.command: "dnf copr enable -y firminunderscore/zen-browser"
 
 # Tailscale Repository
 - name: Add TailScale Repo
-  command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
+  ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
 
 # Docker Engine Repository
 - name: Add Docker Engine Repository
-  command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
+  ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
 
 # Ghostty Repository
 - name: Add Ghostty Repository
-  command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release"
+  ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release"
 
 # PrismLauncher Repository
 - name: Add PrismLauncher Repository
-  command: "dnf copr enable g3tchoo/prismlauncher"
+  ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher"

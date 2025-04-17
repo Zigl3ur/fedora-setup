@@ -1,0 +1,9 @@
+- name: Install Dnf packages
+  ansible.builtin.dnf:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ packages }}"
+
+- name: Install Other Packages
+  ansible.builtin.command: "{{ command }}"
+  loop: "{{ other_packages }}"

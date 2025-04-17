@@ -12,4 +12,37 @@ configs_dest:
   - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty/config" }
   - { src: "{{ playbook_dir }}/configs/config.starship", dest: "{{ home }}/.config/starship.toml" }
 
-# repos vars
+# packages vars
+repo_packages:
+  - btop
+  - code
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+  - docker-buildx-plugin
+  - docker-compose-plugin
+  - fish
+  - zoxide
+  - fzf
+  - onefetch
+  - fastfetch
+  - gh
+  - bat
+  - eza
+  - mpv
+  - ghostty
+  - prismlauncher
+  - steam
+  - zen-browser
+  - tailscale
+  - meslo-nerd-fonts
+  - jetbrainsmono-nerd-fonts
+other_packages:
+  - curl -sS https://starship.rs/install.sh | sh
+  - curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+  - curl -fsSL https://bun.sh/install | bash
+
+# shell setup vars
+shell_commands:
+  - fisher install PatrickF1/fzf.fish
+  - chsh -s /usr/bin/fish

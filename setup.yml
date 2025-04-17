@@ -10,3 +10,7 @@
       ansible.builtin.include_tasks: tasks/configs.yml
     - name: Add Repositories
       ansible.builtin.include_tasks: tasks/repos.yml
+    - name: Install Packages
+      ansible.builtin.include_tasks: tasks/packages.yml
+    - name: Setup Shell
+      ansible.builtin.include_tasks: tasks/shell.yml

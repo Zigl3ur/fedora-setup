@@ -1,0 +1,3 @@
+- name: Setup Fish Shell
+  ansible.builtin.command: "{{ command }}"
+  loop: "{{ shell_commands }}"
