@@ -1,8 +1,8 @@
 user: eden
 home: /home/eden
 configs_dir:
-  - ~/.config/fish
-  - ~/.config/ghostty
+  - "{{ home }}/.config/fish"
+  - "{{ home }}/.config/ghostty"
 configs_dest:
   - { src: "{{ playbook_dir }}/configs/config.fish", dest: "{{ home }}/.config/fish/config.fish" }
   - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty/config" }
