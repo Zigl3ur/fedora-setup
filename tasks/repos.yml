@@ -78,8 +78,16 @@
     when: not docker_repo.stat.exists
 
 # Ghostty Repository
-- name: Add Ghostty Repository
-  ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+- block:
+
+  - name: Check If Prism Launcher Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/terra.repo
+    register: terra_repo
+
+  - name: Add Ghostty Repository
+    ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+    when: not terra_repo.stat.exists
 
 # PrismLauncher Repository
 - block:
@@ -91,4 +99,4 @@
 
   - name: Add PrismLauncher Repository
     ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher -y"
-    when: not prismlauncher.stat.exists
+    when: not prismlauncher_repo.stat.exists

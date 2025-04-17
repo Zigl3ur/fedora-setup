@@ -31,7 +31,7 @@ repo_packages:
   - eza
   - mpv
   - ghostty
-  - node
+  - nodejs
   - prismlauncher
   - steam
   - zen-browser
