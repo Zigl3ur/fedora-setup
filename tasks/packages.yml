@@ -4,6 +4,6 @@
     state: present
   loop: "{{ repo_packages }}"
 
-# - name: Install Other Packages
-#   ansible.builtin.command: "{{ item }}"
-#   loop: "{{ other_packages }}"
+- name: Install Other Packages
+  ansible.builtin.shell: "{{ item }}"
+  loop: "{{ other_packages }}"
