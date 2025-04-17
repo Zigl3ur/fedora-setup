@@ -3,7 +3,7 @@
   become: true
 
   vars_files:
-    - vars/vars.yaml
+    - vars/vars.yml
 
   tasks:
     - name: Handle Config Files
