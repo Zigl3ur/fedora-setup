@@ -2,3 +2,7 @@ user: eden
 configs_dir:
   - ~/.config/fish
   - ~/.config/ghostty
+configs_dest:
+  - { src: ../configs/config.fish, dest: ~/.config/fish }
+  - { src: ../configs/config.ghostty, dest: ~/.config/ghostty }
+  - { src: ../configs/config.starship, dest: ~/.config/starship.toml }

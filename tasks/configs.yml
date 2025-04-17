@@ -6,3 +6,12 @@
     group: "{{ user }}"
     mode: "700"
   loop: "{{ configs_dir }}"
+
+- name: Place Configs Files
+  ansible.builtin.copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "700"
+  loop: "{{ configs_dest }}"
