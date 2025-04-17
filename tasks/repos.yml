@@ -16,14 +16,19 @@
       name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
       state: present
 
-
 # Visual Studio Code Repository
 - block:
+
+  - name: Check If VScode Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/vscode.repo
+    register: vscode_repo
 
   - name: Add VScode Repo key
     ansible.builtin.rpm_key:
       key: https://packages.microsoft.com/keys/microsoft.asc
       state: present
+    when: not vscode_repo.stat.exists
   
   - name: Add VScode Repo
     ansible.builtin.yum_repository:
@@ -33,24 +38,57 @@
       baseurl: "https://packages.microsoft.com/yumrepos/vscode"
       gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
       gpgcheck: yes
+    when: not vscode_repo.stat.exists
 
 
 # Zen Browser Repository
-- name: Add Zen Copr Repo
-  ansible.builtin.command: "dnf copr enable -y firminunderscore/zen-browser"
+- block:
+
+  - name: Check If Zen Browser Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:firminunderscore:zen-browser.repo
+    register: zenbrowser_repo
+
+  - name: Add Zen Copr Repo
+    ansible.builtin.command: "dnf copr enable -y firminunderscore/zen-browser -y"
+    when: not zenbrowser_repo.stat.exists
 
 # Tailscale Repository
-- name: Add TailScale Repo
-  ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
+- block:
+
+  - name: Check If TailScale Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/tailscale.repo
+    register: tailscale_repo
+
+  - name: Add TailScale Repo
+    ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
+    when: not tailscale_repo.stat.exists
 
 # Docker Engine Repository
-- name: Add Docker Engine Repository
-  ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
+- block:
+
+  - name: Check If Docker Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/docker-ce.repo
+    register: docker_repo
+
+  - name: Add Docker Engine Repository
+    ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
+    when: not docker_repo.stat.exists
 
 # Ghostty Repository
 - name: Add Ghostty Repository
-  ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release"
+  ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
 
 # PrismLauncher Repository
-- name: Add PrismLauncher Repository
-  ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher"
+- block:
+
+  - name: Check If Prism Launcher Repo Already Added
+    ansible.builtin.stat:
+      path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:g3tchoo:prismlauncher.repo
+    register: prismlauncher_repo
+
+  - name: Add PrismLauncher Repository
+    ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher -y"
+    when: not prismlauncher.stat.exists
