@@ -1,8 +1,9 @@
 user: eden
+home: /home/eden
 configs_dir:
   - ~/.config/fish
   - ~/.config/ghostty
 configs_dest:
-  - { src: "{{ playbook_dir }}/configs/config.fish", dest: ~/.config/fish }
-  - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: ~/.config/ghostty }
-  - { src: "{{ playbook_dir }}/configs/config.starship", dest: ~/.config/starship.toml }
+  - { src: "{{ playbook_dir }}/configs/config.fish", dest: "{{ home }}/.config/fish" }
+  - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty" }
+  - { src: "{{ playbook_dir }}/configs/config.starship", dest: "{{ home }}/.config/starship.toml" }
