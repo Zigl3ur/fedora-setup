@@ -1,33 +1,56 @@
+# RPM fusion non free repository
 - block:
 
   - name: Install Distribution GPG Keys
-    dnf:
+    ansible.builtin.dnf:
       name: distribution-gpg-keys
       state: present
 
   - name: Add RPM Fusion NonFree key
-    rpm_key:
+    ansible.builtin.rpm_key:
       key: "/usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ fedora_version }}"
       state: present
 
   - name: Add RPM Fusion NonFree
-    dnf:
+    ansible.builtin.dnf:
       name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
       state: present
 
 
+# Visual Studio Code Repository
 - block:
   
   - name: Add VScode Repo key
-    rpm_key:
+    ansible.builtin.rpm_key:
       key: https://packages.microsoft.com/keys/microsoft.asc
       state: present
   
   - name: Add VScode Repo
-    yum_repository:
+    ansible.builtin.yum_repository:
       name: code
       description: Visual Studio Code
       file: vscode
       baseurl: "https://packages.microsoft.com/yumrepos/vscode"
       gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
       gpgcheck: yes
+
+
+# Zen Browser Repository
+- name: Add Zen Copr Repo
+  command: "dnf copr enable -y firminunderscore/zen-browser"
+
+# Tailscale Repository
+- name: Add TailScale Repo
+  command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
+
+# Docker Engine Repository
+- name: Add Docker Engine Repository
+  command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
+
+# Ghostty Repository
+- name: Add Ghostty Repository
+  command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release"
+
+# PrismLauncher Repository
+- name: Add PrismLauncher Repository
+  command: "dnf copr enable g3tchoo/prismlauncher"
