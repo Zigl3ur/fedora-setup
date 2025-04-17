@@ -1,5 +1,7 @@
+# global vars
 user: eden
 home: /home/eden
+fedora_version: "{{ ansible_distribution_version }}"
 
 # configs folders / files vars 
 configs_dir:
@@ -9,3 +11,5 @@ configs_dest:
   - { src: "{{ playbook_dir }}/configs/config.fish", dest: "{{ home }}/.config/fish/config.fish" }
   - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty/config" }
   - { src: "{{ playbook_dir }}/configs/config.starship", dest: "{{ home }}/.config/starship.toml" }
+
+# repos vars
