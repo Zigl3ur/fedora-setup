@@ -4,6 +4,6 @@ configs_dir:
   - ~/.config/fish
   - ~/.config/ghostty
 configs_dest:
-  - { src: "{{ playbook_dir }}/configs/config.fish", dest: "{{ home }}/.config/fish" }
-  - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty" }
+  - { src: "{{ playbook_dir }}/configs/config.fish", dest: "{{ home }}/.config/fish/config.fish" }
+  - { src: "{{ playbook_dir }}/configs/config.ghostty", dest: "{{ home }}/.config/ghostty/config" }
   - { src: "{{ playbook_dir }}/configs/config.starship", dest: "{{ home }}/.config/starship.toml" }
