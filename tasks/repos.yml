@@ -1,0 +1,17 @@
+- name: Add RPM Fusion NonFree
+  ansible.builtin.dnf:
+    name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ ansible_distribution_version }}.noarch.rpm"
+    state: present
+
+
+- name: Add VScode Repo
+  rpm_key:
+    state: present
+    key: https://packages.microsoft.com/keys/microsoft.asc
+  yum_repository:
+    name: code
+    description: Visual Studio Code
+    file: vscode
+    baseurl: "https://packages.microsoft.com/yumrepos/vscode"
+    gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+    gpgcheck: true

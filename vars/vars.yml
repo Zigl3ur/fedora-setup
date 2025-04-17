@@ -1,5 +1,7 @@
 user: eden
 home: /home/eden
+
+# configs folders / files vars 
 configs_dir:
   - "{{ home }}/.config/fish"
   - "{{ home }}/.config/ghostty"

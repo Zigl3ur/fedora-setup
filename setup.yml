@@ -8,3 +8,5 @@
   tasks:
     - name: Handle Config Files
       ansible.builtin.include_tasks: tasks/configs.yml
+    - name: Add Repository
+      ansible.builtin.include_tasks: tasks/repos.yml
