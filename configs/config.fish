@@ -49,9 +49,9 @@ end
 
 # ----- FILE NAVIGATION & MANAGEMENT -----
 # Aliases for file management commands
-alias lal="eza -al --icons --git --group-directories-first" # List all files in list format
-alias ll="eza -l --icons --git --group-directories-first" # List files in list format
-alias ls="eza --icons --git --group-directories-first" # List files
+alias lal="eza -al --icons --git --group-directories-first --group" # List all files in list format
+alias ll="eza -l --icons --git --group-directories-first --group" # List files in list format
+alias ls="eza --icons --git --group-directories-first --group" # List files
 alias lt="eza -TL 3 --icons --group-directories-first" # Tree
 alias zz="cd .." # Go up one directory
 alias rmd="rm -rfvI" # Remove files/directories with confirmation
