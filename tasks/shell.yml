@@ -1,3 +1,10 @@
-- name: Setup Fish Shell
+- name: Exec Shell Commands
   ansible.builtin.shell: "{{ item }}"
+  args:
+    executable: /usr/bin/fish
   loop: "{{ shell_commands }}"
+
+- name: Set Fish Shell
+  ansible.builtin.expect:
+    ansible.builtin.shell: chsh -s /usr/bin/fish
+    responses: "{{ password }}"

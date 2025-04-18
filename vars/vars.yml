@@ -1,5 +1,6 @@
 # global vars
 user: eden
+password: YOUR_PASSWORD
 home: /home/eden
 fedora_version: "{{ ansible_distribution_version }}"
 
@@ -47,4 +48,3 @@ other_packages:
 # shell setup vars
 shell_commands:
   - fisher install PatrickF1/fzf.fish
-  - chsh -s /usr/bin/fish

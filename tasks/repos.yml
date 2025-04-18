@@ -19,26 +19,26 @@
 # Visual Studio Code Repository
 - block:
 
-  - name: Check If VScode Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/vscode.repo
-    register: vscode_repo
+    - name: Check If VScode Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/vscode.repo
+      register: vscode_repo
 
-  - name: Add VScode Repo key
-    ansible.builtin.rpm_key:
-      key: https://packages.microsoft.com/keys/microsoft.asc
-      state: present
-    when: not vscode_repo.stat.exists
-  
-  - name: Add VScode Repo
-    ansible.builtin.yum_repository:
-      name: code
-      description: Visual Studio Code
-      file: vscode
-      baseurl: "https://packages.microsoft.com/yumrepos/vscode"
-      gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
-      gpgcheck: yes
-    when: not vscode_repo.stat.exists
+    - name: Add VScode Repo key
+      ansible.builtin.rpm_key:
+        key: https://packages.microsoft.com/keys/microsoft.asc
+        state: present
+      when: not vscode_repo.stat.exists
+    
+    - name: Add VScode Repo
+      ansible.builtin.yum_repository:
+        name: code
+        description: Visual Studio Code
+        file: vscode
+        baseurl: "https://packages.microsoft.com/yumrepos/vscode"
+        gpgkey: "https://packages.microsoft.com/keys/microsoft.asc"
+        gpgcheck: yes
+      when: not vscode_repo.stat.exists
 
 
 # Zen Browser Repository
