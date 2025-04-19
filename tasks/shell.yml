@@ -10,3 +10,4 @@
     name: "{{ user }}"
     shell: "/usr/bin/fish"
     state: present
+  become: true
