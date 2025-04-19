@@ -1,4 +1,4 @@
-- name: Fedora Setup
+- name: Fedora Playbook
   hosts: localhost
   become: true
 

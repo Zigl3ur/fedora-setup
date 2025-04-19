@@ -5,6 +5,7 @@
   loop: "{{ shell_commands }}"
 
 - name: Set Fish Shell
-  ansible.builtin.expect:
-    ansible.builtin.shell: chsh -s /usr/bin/fish
-    responses: "{{ password }}"
+  ansible.builtin.user:
+    name: "{{ user }}"
+    shell: "/usr/bin/fish"
+    state: present
