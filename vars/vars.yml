@@ -1,6 +1,5 @@
 # global vars
 user: eden
-password: YOUR_PASSWORD
 home: /home/eden
 fedora_version: "{{ ansible_distribution_version }}"
 
