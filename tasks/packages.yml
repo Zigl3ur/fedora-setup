@@ -5,9 +5,9 @@
   loop: "{{ repo_packages }}"
   become: true
 
-- name: Install Flatpacks
+- name: Install Flatpaks
   ansible.builtin.shell: "flatpak install {{ item }} -y"
-  loop: "{{ flatpacks }}"
+  loop: "{{ flatpaks }}"
   become: true
 
 - name: Install Other Packages Root

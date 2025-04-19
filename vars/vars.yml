@@ -43,7 +43,7 @@ repo_packages:
   - starship
   - meslo-nerd-fonts
   - jetbrainsmono-nerd-fonts
-flatpacks:
+flatpaks:
   - flathub com.ktechpit.whatsie
   - flathub io.missioncenter.MissionCenter
   - flathub org.signal.Signal
