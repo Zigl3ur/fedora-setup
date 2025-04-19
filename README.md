@@ -9,20 +9,22 @@ You can customize the playbook by mainly modifying the vars file in [`vars/vars.
 ## Usage
 
 1. Install Ansible on the system if not already:
-    ```bash
-    sudo dnf install ansible
-    ```
+
+   ```bash
+   sudo dnf install ansible
+   ```
 
 2. Clone the repository:
-    ```bash
-    git clone https://github.com/Zigl3ur/fedora-playbook.git
-    cd fedora-playbook
-    ```
 
-3. Run the playbook as superuser:
-    ```bash
-    sudo ansible-playbook setup.yml
-    ```
+   ```bash
+   git clone https://github.com/Zigl3ur/fedora-playbook.git
+   cd fedora-playbook
+   ```
+
+3. Run the playbook:
+   ```bash
+   ansible-playbook setup.yml
+   ```
 
 ## Note
 
