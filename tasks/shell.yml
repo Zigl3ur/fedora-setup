@@ -3,6 +3,7 @@
   args:
     executable: /usr/bin/fish
   loop: "{{ shell_commands }}"
+  become: true
 
 - name: Set Fish Shell
   ansible.builtin.user:

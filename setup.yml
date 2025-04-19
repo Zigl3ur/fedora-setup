@@ -1,6 +1,5 @@
 - name: Fedora Playbook
   hosts: localhost
-  become: true
 
   vars_files:
     - vars/vars.yml

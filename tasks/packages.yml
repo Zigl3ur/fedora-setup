@@ -3,16 +3,19 @@
     name: "{{ item }}"
     state: present
   loop: "{{ repo_packages }}"
+  become: true
 
 - name: Install Flatpacks
   ansible.builtin.shell: "flatpak install {{ item }} -y"
   loop: "{{ flatpacks }}"
+  become: true
 
 - name: Install Other Packages Root
   ansible.builtin.shell: "{{ item.command }}"
   args:
     executable: "{{ item.exec }}"
   loop: "{{ other_packages_root }}"
+  become: true
 
 - name: Install Other Packages User
   ansible.builtin.shell: "{{ item.command }}"
