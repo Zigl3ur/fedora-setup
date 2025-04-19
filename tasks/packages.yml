@@ -4,6 +4,10 @@
     state: present
   loop: "{{ repo_packages }}"
 
+- name: Install Flatpacks
+  ansible.builtin.shell: "flatpak install {{ item }} -y"
+  loop: "{{ flatpacks }}"
+
 - name: Install Other Packages
   ansible.builtin.shell: "{{ item }}"
   args:

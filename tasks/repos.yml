@@ -100,3 +100,6 @@
   - name: Add PrismLauncher Repository
     ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher -y"
     when: not prismlauncher_repo.stat.exists
+
+- name: Add Falthub Repo
+  ansible.builtin.command: "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"

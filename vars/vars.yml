@@ -42,6 +42,10 @@ repo_packages:
   - starship
   - meslo-nerd-fonts
   - jetbrainsmono-nerd-fonts
+flatpacks:
+  - flathub com.ktechpit.whatsie
+  - flathub io.missioncenter.MissionCenter
+  - flathub org.signal.Signal
 other_packages:
   - dnf install https://vencord.dev/download/vesktop/amd64/rpm -y
   - curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
