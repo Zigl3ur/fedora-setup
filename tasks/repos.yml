@@ -1,24 +1,24 @@
-# RPM fusion non free repository
-- block:
+- name: RPM Fusion Repository
+  block:
 
-  - name: Install Distribution GPG Keys
-    ansible.builtin.dnf:
-      name: distribution-gpg-keys
-      state: present
+    - name: Install Distribution GPG Keys
+      ansible.builtin.dnf:
+        name: distribution-gpg-keys
+        state: present
 
-  - name: Add RPM Fusion NonFree key
-    ansible.builtin.rpm_key:
-      key: "/usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ fedora_version }}"
-      state: present
+    - name: Add RPM Fusion NonFree key
+      ansible.builtin.rpm_key:
+        key: "/usr/share/distribution-gpg-keys/rpmfusion/RPM-GPG-KEY-rpmfusion-nonfree-fedora-{{ fedora_version }}"
+        state: present
 
-  - name: Add RPM Fusion NonFree
-    ansible.builtin.dnf:
-      name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
-      state: present
+    - name: Add RPM Fusion NonFree
+      ansible.builtin.dnf:
+        name: "https://mirrors.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-{{ fedora_version }}.noarch.rpm"
+        state: present
   become: true
 
-# Visual Studio Code Repository
-- block:
+- name: Visual Studio Code Repository
+  block:
 
     - name: Check If VScode Repo Already Added
       ansible.builtin.stat:
@@ -43,71 +43,72 @@
   become: true
 
 
-# Zen Browser Repository
-- block:
+- name: Zen Browser Repository
+  block:
 
-  - name: Check If Zen Browser Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:firminunderscore:zen-browser.repo
-    register: zenbrowser_repo
+    - name: Check If Zen Browser Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:firminunderscore:zen-browser.repo
+      register: zenbrowser_repo
 
-  - name: Add Zen Copr Repo
-    ansible.builtin.command: "dnf copr enable -y firminunderscore/zen-browser -y"
-    when: not zenbrowser_repo.stat.exists
+    - name: Add Zen Copr Repo
+      ansible.builtin.command: "dnf copr enable -y firminunderscore/zen-browser -y"
+      when: not zenbrowser_repo.stat.exists
   become: true
 
-# Tailscale Repository
-- block:
+- name: Tailscale Repository
+  block:
 
-  - name: Check If TailScale Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/tailscale.repo
-    register: tailscale_repo
+    - name: Check If TailScale Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/tailscale.repo
+      register: tailscale_repo
 
-  - name: Add TailScale Repo
-    ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
-    when: not tailscale_repo.stat.exists
+    - name: Add TailScale Repo
+      ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo"
+      when: not tailscale_repo.stat.exists
   become: true
 
-# Docker Engine Repository
-- block:
+- name: Docker Engine Repository
+  block:
 
-  - name: Check If Docker Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/docker-ce.repo
-    register: docker_repo
+    - name: Check If Docker Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/docker-ce.repo
+      register: docker_repo
 
-  - name: Add Docker Engine Repository
-    ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
-    when: not docker_repo.stat.exists
+    - name: Add Docker Engine Repository
+      ansible.builtin.command: "dnf config-manager addrepo --from-repofile=https://download.docker.com/linux/fedora/docker-ce.repo"
+      when: not docker_repo.stat.exists
   become: true
 
-# Ghostty Repository
-- block:
+- name: Ghostty Repository 
+  block:
 
-  - name: Check If Prism Launcher Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/terra.repo
-    register: terra_repo
+    - name: Check If Prism Launcher Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/terra.repo
+      register: terra_repo
 
-  - name: Add Ghostty Repository
-    ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
-    when: not terra_repo.stat.exists
+    - name: Add Ghostty Repository
+      ansible.builtin.command: "dnf install --nogpgcheck --repofrompath 'terra,https://repos.fyralabs.com/terra$releasever' terra-release -y"
+      when: not terra_repo.stat.exists
   become: true
 
-# PrismLauncher Repository
-- block:
 
-  - name: Check If Prism Launcher Repo Already Added
-    ansible.builtin.stat:
-      path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:g3tchoo:prismlauncher.repo
-    register: prismlauncher_repo
+- name: PrismLauncher Repository
+  block:
 
-  - name: Add PrismLauncher Repository
-    ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher -y"
-    when: not prismlauncher_repo.stat.exists
+    - name: Check If Prism Launcher Repo Already Added
+      ansible.builtin.stat:
+        path: /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:g3tchoo:prismlauncher.repo
+      register: prismlauncher_repo
+
+    - name: Add PrismLauncher Repository
+      ansible.builtin.command: "dnf copr enable g3tchoo/prismlauncher -y"
+      when: not prismlauncher_repo.stat.exists
   become: true
 
-- name: Add Falthub Repo
+- name: Add Falthub Repository
   ansible.builtin.command: "flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo"
   become: true
