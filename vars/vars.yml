@@ -16,8 +16,8 @@ configs_dest:
 # packages vars
 repo_packages:
   - btop
-  - akmod-nvidia
-  - xorg-x11-drv-nvidia-cuda
+  # - akmod-nvidia
+  # - xorg-x11-drv-nvidia-cuda
   - code
   - docker-ce
   - docker-ce-cli
