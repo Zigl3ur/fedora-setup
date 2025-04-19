@@ -6,6 +6,7 @@ end
 
 # Remove fish greeting message
 set -g fish_greeting
+set -g fish_color_command blue
 
 export EDITOR=/usr/bin/nano
 # export VISUAL=/usr/bin/code
