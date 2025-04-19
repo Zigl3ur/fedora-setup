@@ -50,11 +50,10 @@ flatpaks:
 other_packages_root:
   - { command: dnf install https://vencord.dev/download/vesktop/amd64/rpm -y, exec: /usr/bin/fish }
 other_packages_user:
-  - { command: curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher, exec: /usr/bin/fish }
+  - { command: curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install PatrickF1/fzf.fish, exec: /usr/bin/fish }
   - { command: curl -fsSL https://bun.sh/install | bash, exec: /bin/bash }
   - { command: curl -fsSL https://get.pnpm.io/install.sh | bash, exec: /bin/bash }
 
 # shell setup vars
 shell_commands:
   - sudo systemctl enable --now tailscaled
-  - fisher install PatrickF1/fzf.fish
