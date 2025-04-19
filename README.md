@@ -1,6 +1,6 @@
 # Fedora Playbook
 
-This playbook is a custom ansible playbook made to execute on a fresg Fedora install so it's easier for me to have a functional and operational system.
+This playbook is a custom ansible playbook made to execute on a fresh Fedora install so it's easier for me to have a functional and operational system.
 
 ## Configuration
 
