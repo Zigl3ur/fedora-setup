@@ -30,6 +30,7 @@ repo_packages:
   - fzf
   - onefetch
   - fastfetch
+  - filezilla
   - gh
   - bat
   - eza
@@ -55,4 +56,5 @@ other_packages:
 
 # shell setup vars
 shell_commands:
+  - sudo systemctl enable --now tailscaled
   - fisher install PatrickF1/fzf.fish
