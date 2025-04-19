@@ -23,7 +23,7 @@ You can customize the playbook by mainly modifying the vars file in [`vars/vars.
 
 3. Run the playbook:
    ```bash
-   ansible-playbook setup.yml
+   ansible-playbook -K setup.yml
    ```
 
 ## Note
