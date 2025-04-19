@@ -8,8 +8,15 @@
   ansible.builtin.shell: "flatpak install {{ item }} -y"
   loop: "{{ flatpacks }}"
 
-- name: Install Other Packages
-  ansible.builtin.shell: "{{ item }}"
+- name: Install Other Packages Root
+  ansible.builtin.shell: "{{ item.command }}"
   args:
-    executable: /usr/bin/fish
-  loop: "{{ other_packages }}"
+    executable: "{{ item.exec }}"
+  loop: "{{ other_packages_root }}"
+
+- name: Install Other Packages User
+  ansible.builtin.shell: "{{ item.command }}"
+  args:
+    executable: "{{ item.exec }}"
+  loop: "{{ other_packages_user }}"
+  become: false
